@@ -23,12 +23,6 @@ class Vkontakte extends AbstractProvider
      */
     const BASE_OAUTH_URL = 'https://oauth.vk.com';
 
-    /**
-     * The Graph API version to use for requests.
-     *
-     * @var string
-     */
-    protected $apiVersion;
 
     /**
      * @param array $options
@@ -39,13 +33,6 @@ class Vkontakte extends AbstractProvider
     public function __construct($options = [], array $collaborators = [])
     {
         parent::__construct($options, $collaborators);
-
-        if (empty($options['apiVersion'])) {
-            $message = 'The "graphApiVersion" option not set. Please set a default Graph API version.';
-            throw new \InvalidArgumentException($message);
-        }
-
-        $this->apiVersion = $options['apiVersion'];
     }
 
     public function getBaseAuthorizationUrl()
