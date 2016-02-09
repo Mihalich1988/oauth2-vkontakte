@@ -1,6 +1,6 @@
 <?php
 
-namespace League\OAuth2\Client\Provider\Exception;
+namespace Mihalich1988\OAuth2\Client\Provider\Exception;
 
 class VkontakteProviderException extends \Exception
 {

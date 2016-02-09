@@ -1,6 +1,8 @@
 <?php
 
-namespace League\OAuth2\Client\Provider;
+namespace Mihalich1988\OAuth2\Client\Provider;
+
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
 class VkontakteUser implements ResourceOwnerInterface
 {
