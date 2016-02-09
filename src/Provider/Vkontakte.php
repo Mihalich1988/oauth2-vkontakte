@@ -73,6 +73,14 @@ class Vkontakte extends AbstractProvider
         return parent::getAccessToken($grant, $params);
     }
 
+    protected function prepareAccessTokenResponse(array $result)
+    {
+        $result['resource_owner_id'] = $result['user_id'];
+
+        return $result;
+    }
+
+
     protected function createResourceOwner(array $response, AccessToken $token)
     {
         return new VkontakteUser($response);
