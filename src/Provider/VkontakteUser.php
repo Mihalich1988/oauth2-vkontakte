@@ -16,14 +16,12 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function __construct(array $response)
     {
-        $this->data = $response;
+        $user = $response[0];
 
-        if (!empty($response['picture']['data']['url'])) {
-            $this->data['picture_url'] = $response['picture']['data']['url'];
-        }
+        $this->data = $user;
 
-        if (!empty($response['cover']['source'])) {
-            $this->data['cover_photo_url'] = $response['cover']['source'];
+        if (!empty($user['city']['title'])) {
+            $this->data['city'] = $user['city']['title'];
         }
     }
 
@@ -44,7 +42,7 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function getName()
     {
-        return $this->getField('name');
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
     /**
@@ -84,17 +82,7 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function getHometown()
     {
-        return $this->getField('hometown');
-    }
-
-    /**
-     * Returns the "about me" bio for the user as a string if present.
-     *
-     * @return string|null
-     */
-    public function getBio()
-    {
-        return $this->getField('bio');
+        return $this->getField('city');
     }
 
     /**
@@ -104,17 +92,7 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function getPictureUrl()
     {
-        return $this->getField('picture_url');
-    }
-
-    /**
-     * Returns the cover photo URL of the user as a string if present.
-     *
-     * @return string|null
-     */
-    public function getCoverPhotoUrl()
-    {
-        return $this->getField('cover_photo_url');
+        return $this->getField('photo_max_orig');
     }
 
     /**
@@ -124,28 +102,9 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function getGender()
     {
-        return $this->getField('gender');
+        return $this->getField('sex');
     }
 
-    /**
-     * Returns the locale of the user as a string if available.
-     *
-     * @return string|null
-     */
-    public function getLocale()
-    {
-        return $this->getField('locale');
-    }
-
-    /**
-     * Returns the Facebook URL for the user as a string if available.
-     *
-     * @return string|null
-     */
-    public function getLink()
-    {
-        return $this->getField('link');
-    }
 
     /**
      * Returns all the data obtained about the user.

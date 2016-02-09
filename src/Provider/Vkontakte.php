@@ -54,8 +54,7 @@ class Vkontakte extends AbstractProvider
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
         $fields = implode(',', [
-            'nickname', 'screen_name', 'sex', 'bdate', 'city', 'country', 'timezone',
-            'photo_50', 'photo_100', 'photo_200_orig',
+            'nickname', 'screen_name', 'sex', 'bdate', 'city', 'country', 'timezone', 'photo_max_orig',
             'has_mobile', 'contacts', 'education', 'online', 'counters', 'relation', 'last_seen', 'status',
             'can_write_private_message', 'can_see_all_posts', 'can_see_audio', 'can_post', 'universities',
             'schools', 'verified',
