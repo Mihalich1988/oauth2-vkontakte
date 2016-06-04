@@ -16,7 +16,7 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function __construct(array $response)
     {
-        $user = $response[0];
+        $user = $response['response'][0];
 
         $this->data = $user;
 
