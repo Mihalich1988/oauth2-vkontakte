@@ -32,7 +32,7 @@ class VkontakteUser implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->getField('id');
+        return $this->getField('uid');
     }
 
     /**
